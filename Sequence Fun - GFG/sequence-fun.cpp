@@ -20,7 +20,6 @@ class Solution {
 		        n--;
 		    }
 		    return ans;
-		    
 		    // Code  here
 		}
 
