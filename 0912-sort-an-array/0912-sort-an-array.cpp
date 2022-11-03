@@ -1,32 +1,77 @@
 class Solution {
 public:
-    void merge(vector<int>& nums, int l, int m, int r){
-    vector<int> tmp(r - l + 1);
-    int i = l; // index for left subarray
-    int j = m + 1; // index for right subarray
-    int k = 0; // index for temporary array
-    while(i <= m && j <= r){
-        if(nums[i] <= nums[j]) tmp[k++] = nums[i++]; 
-        else tmp[k++] = nums[j++];
+    void merge(vector<int>& arr, int s, int e) {
+
+    int mid = (s+e)/2;
+
+    int len1 = mid - s + 1;
+    int len2 = e - mid;
+
+    int *first = new int[len1];
+    int *second = new int[len2];
+
+    //copy values
+    int mainArrayIndex = s;
+    for(int i=0; i<len1; i++) {
+        first[i] = arr[mainArrayIndex++];
     }
-    while(i <= m) tmp[k++] = nums[i++];
-    while(j <= r) tmp[k++] = nums[j++]; 
-    for(i = 0; i < k; i++) nums[l + i] = tmp[i];
+
+    mainArrayIndex = mid+1;
+    for(int i=0; i<len2; i++) {
+        second[i] = arr[mainArrayIndex++];
+    }
+
+    //merge 2 sorted arrays     
+    int index1 = 0;
+    int index2 = 0;
+    mainArrayIndex = s;
+
+    while(index1 < len1 && index2 < len2) {
+        if(first[index1] < second[index2]) {
+            arr[mainArrayIndex++] = first[index1++];
+        }
+        else{
+            arr[mainArrayIndex++] = second[index2++];
+        }
+    }   
+
+    while(index1 < len1) {
+        arr[mainArrayIndex++] = first[index1++];
+    }
+
+    while(index2 < len2 ) {
+        arr[mainArrayIndex++] = second[index2++];
+    }
+
+    delete []first;
+    delete []second;
+
 }
 
-// mergeSort(nums, 0, nums.size() - 1);
-void mergeSort(vector<int>& nums, int s, int e){
-    if(s >= e) return;
-    int mid = s + (e - s) / 2; //middle index, same as (l+r)/2
-    mergeSort(nums, s, mid);
-    mergeSort(nums, mid + 1, e);
-    merge(nums, s, mid, e);
+void mergeSort(vector<int>& arr, int s, int e) {
+
+    //base case
+    if(s >= e) {
+        return;
+    }
+    
+    int mid = (s+e)/2;
+
+    //left part sort karna h 
+    mergeSort(arr, s, mid);
+    
+    //right part sort karna h 
+    mergeSort(arr, mid+1, e);
+
+    //merge
+    merge(arr, s, e);
+
 }
-    vector<int> sortArray(vector<int>& nums) {
-        int l=0;
-        int r=nums.size()-1;
-        mergeSort(nums,l,r);
-        return nums;
+    vector<int> sortArray(vector<int>& arr) {
+        int s=0;
+        int e=arr.size()-1;
+        mergeSort(arr,s,e);
+        return arr;
         
     }
 };
