@@ -40,7 +40,7 @@ class Solution {
 
     }
         // code here
-
+    
 };
 
 //{ Driver Code Starts.
