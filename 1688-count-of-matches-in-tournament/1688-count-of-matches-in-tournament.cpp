@@ -1,21 +1,6 @@
 class Solution {
 public:
     int numberOfMatches(int n) {
-        int c = 0;
-            while (n > 1)
-            {
-                if (n % 2 == 0)
-                {
-                    c = c + n / 2;
-                    n = n - n / 2;
-                }
-                else if (n % 2 == 1)
-                {
-                    c = c + (n - 1) / 2;
-                    n = n - (n - 1) / 2;
-                }
-            }
-            return c;
-        
+      return n == 1 ? 0 : n / 2 + numberOfMatches(n / 2 + (n%2));
     }
 };
