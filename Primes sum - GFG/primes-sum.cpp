@@ -7,8 +7,7 @@ using namespace std;
 // User function Template for C++
 class Solution {
 public:
-
-bool check(int N)
+   bool check(int N)
 {
     for(int i=2;i<=sqrt(N);i++)
     {
