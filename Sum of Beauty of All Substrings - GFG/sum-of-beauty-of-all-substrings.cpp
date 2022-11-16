@@ -9,8 +9,7 @@ using namespace std;
 class Solution {
   public:
     int beautySum(string s) {
-      
-      int n=s.size();
+         int n=s.size();
 
          int sum=0;
 
@@ -51,6 +50,8 @@ class Solution {
  
 
     }
+        // Your code goes here
+    
 };
 
 //{ Driver Code Starts.
