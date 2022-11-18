@@ -6,7 +6,7 @@ using namespace std;
 class Solution {
   public:
     int noOfOpenDoors(long long N) {
-        double ans= sqrt(N);
+         double ans= sqrt(N);
         return ans;
         // code here
     }
