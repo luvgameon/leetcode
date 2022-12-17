@@ -7,8 +7,7 @@ using namespace std;
 // } Driver Code Ends
 // User function Template for C++
 
-
- class Solution {
+class Solution {
   public:
     long long maxGcd(int N) {
         // code here
